@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/secondpage.dart';
+import 'servicescategories.dart';
+import 'guidance.dart';
+import 'billingpage.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() => runApp(MainPage());
 
@@ -46,50 +49,81 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                     child: ListTile(
+                      contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
                       leading: CircleAvatar(
                         backgroundColor: Colors.blue[100],
                         child: Image.asset(
                           "images/sponsorship.png",
+                          color: Colors.black,
+                          cacheWidth: 50,
                           width: 50,
                           height: 50,
-                          color: Colors.black,
                         ),
                       ),
                       title: Text(
                         'الخدمات',
                         style: TextStyle(
-                            fontStyle: FontStyle.normal, fontSize: 30),
+                            fontStyle: FontStyle.normal,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
                         textDirection: TextDirection.rtl,
                       ),
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SecondPage(),
-                            ));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return ServicesCategories();
+                          },
+                        ));
                       },
                     ),
                   ),
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(5, 3, 7, 3),
-                height: 80,
-                width: 450,
-                padding: EdgeInsets.all(3),
-                child: Container(
-                  child: Card(
-                    color: Colors.green[100],
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 2, color: Colors.green.shade100),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5),
+                  margin: EdgeInsets.fromLTRB(5, 5, 7, 5),
+                  height: 80,
+                  width: 450,
+                  padding: EdgeInsets.all(3),
+                  child: Container(
+                    child: Card(
+                      color: Colors.green[100],
+                      shape: RoundedRectangleBorder(
+                        side:
+                            BorderSide(width: 2, color: Colors.green.shade100),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
+                        ),
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.green[100],
+                          child: Image.asset(
+                            "images/guidance.png",
+                            width: 50,
+                            height: 50,
+                            cacheWidth: 50,
+                            color: Colors.black,
+                          ),
+                        ),
+                        title: Text(
+                          'الاستعلامات',
+                          style: TextStyle(
+                              fontStyle: FontStyle.normal,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),
+                          textDirection: TextDirection.rtl,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Guidance(),
+                              ));
+                        },
                       ),
                     ),
-                    child: Text(''),
-                  ),
-                ),
-              ),
+                  )),
               Container(
                 margin: EdgeInsets.fromLTRB(1, 1, 1, 1),
                 height: 80,
@@ -104,7 +138,34 @@ class _MainPageState extends State<MainPage> {
                         Radius.circular(5),
                       ),
                     ),
-                    child: Text('hello'),
+                    child: ListTile(
+                      contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.red[300],
+                        child: Image.asset(
+                          "images/bill.png",
+                          width: 50,
+                          height: 50,
+                          cacheWidth: 50,
+                          color: Colors.black,
+                        ),
+                      ),
+                      title: Text(
+                        'الفواتير',
+                        style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                        textDirection: TextDirection.rtl,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BillingPage(),
+                            ));
+                      },
+                    ),
                   ),
                 ),
               ),
