@@ -4,9 +4,12 @@ import 'guidance.dart';
 import 'billingpage.dart';
 import 'package:flutter/cupertino.dart';
 
-void main() => runApp(MainPage());
+void main() {
+  runApp(MainPage());
+}
 
 class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -16,6 +19,12 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: <String, WidgetBuilder>{
+        '/b': (BuildContext context) => ServicesCategories(),
+        '/c': (BuildContext context) => Guidance(),
+        '/d': (BuildContext context) => BillingPage(),
+      },
+      title: 'home page',
       home: Scaffold(
         backgroundColor: Colors.white,
         body: SizedBox(
@@ -69,11 +78,7 @@ class _MainPageState extends State<MainPage> {
                         textDirection: TextDirection.rtl,
                       ),
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return ServicesCategories();
-                          },
-                        ));
+                        Navigator.pushNamed(context, '/b');
                       },
                     ),
                   ),
@@ -107,7 +112,7 @@ class _MainPageState extends State<MainPage> {
                           ),
                         ),
                         title: Text(
-                          'الاستعلامات',
+                          'الدليل',
                           style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 30,
@@ -115,11 +120,7 @@ class _MainPageState extends State<MainPage> {
                           textDirection: TextDirection.rtl,
                         ),
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Guidance(),
-                              ));
+                          Navigator.pushNamed(context, '/c');
                         },
                       ),
                     ),
@@ -151,7 +152,7 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ),
                       title: Text(
-                        'الفواتير',
+                        'استعلامات الفواتير',
                         style: TextStyle(
                             fontStyle: FontStyle.normal,
                             fontSize: 30,
@@ -159,11 +160,7 @@ class _MainPageState extends State<MainPage> {
                         textDirection: TextDirection.rtl,
                       ),
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BillingPage(),
-                            ));
+                        Navigator.pushNamed(context, '/d');
                       },
                     ),
                   ),
