@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'servicescategories.dart';
 import 'guidance.dart';
 import 'billingpage.dart';
-import 'package:flutter/cupertino.dart';
 
 void main() {
   runApp(MainPage());
@@ -19,11 +19,11 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: <String, WidgetBuilder>{
-        '/b': (BuildContext context) => ServicesCategories(),
-        '/c': (BuildContext context) => Guidance(),
-        '/d': (BuildContext context) => BillingPage(),
-      },
+      // routes: <String, WidgetBuilder>{
+      //   '/b': (BuildContext context) => ServicesCategories(),
+      //   '/c': (BuildContext context) => Guidance(),
+      //   '/d': (BuildContext context) => BillingPage(),
+      // },
       title: 'home page',
       home: Scaffold(
         backgroundColor: Colors.white,
@@ -47,41 +47,57 @@ class _MainPageState extends State<MainPage> {
                 height: 80,
                 width: 450,
                 padding: EdgeInsets.all(3),
-                child: Container(
-                  child: Card(
-                    color: Colors.blue[100],
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                          width: 2, color: Colors.lightBlue.shade100),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5),
-                      ),
-                    ),
-                    child: ListTile(
-                      contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.blue[100],
-                        child: Image.asset(
-                          "images/sponsorship.png",
-                          color: Colors.black,
-                          cacheWidth: 50,
-                          width: 50,
-                          height: 50,
+                child: Column(
+                  children: [
+                    Container(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push<void>(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) =>
+                                  const ServicesCategories(),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            Card(
+                              color: Colors.blue[100],
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    width: 2, color: Colors.lightBlue.shade100),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5),
+                                ),
+                              ),
+                              child: ListTile(
+                                contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.blue[100],
+                                  child: Image.asset(
+                                    "images/sponsorship.png",
+                                    color: Colors.black,
+                                    cacheWidth: 50,
+                                    width: 50,
+                                    height: 50,
+                                  ),
+                                ),
+                                title: Text(
+                                  'الخدمات',
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      title: Text(
-                        'الخدمات',
-                        style: TextStyle(
-                            fontStyle: FontStyle.normal,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold),
-                        textDirection: TextDirection.rtl,
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/b');
-                      },
                     ),
-                  ),
+                  ],
                 ),
               ),
               Container(
@@ -120,7 +136,13 @@ class _MainPageState extends State<MainPage> {
                           textDirection: TextDirection.rtl,
                         ),
                         onTap: () {
-                          Navigator.pushNamed(context, '/c');
+                          Navigator.push<void>(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) =>
+                                  const Guidance(),
+                            ),
+                          );
                         },
                       ),
                     ),
@@ -160,7 +182,13 @@ class _MainPageState extends State<MainPage> {
                         textDirection: TextDirection.rtl,
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, '/d');
+                        Navigator.push<void>(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) =>
+                                const BillingPage(),
+                          ),
+                        );
                       },
                     ),
                   ),

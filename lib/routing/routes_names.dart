@@ -1,3 +1,3 @@
-const String FIRST_PAGE = '/ServicesCategories';
-const String SECOND_PAGE = '/Guidance';
-const String THIRD_PAGE = '/BillingPage';
+const String SERVICES_PAGE = '/ServicesCategories';
+const String GUIDANCE_PAGE = '/Guidance';
+const String BILLING_PAGE = '/BillingPage';

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:myapp/pages/main.dart';
-import 'package:myapp/routing/routes_names.dart';
+import '../routing/routes_names.dart';
 import '../pages/billingpage.dart';
 import '../pages/guidance.dart';
 import '../pages/servicescategories.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case FIRST_PAGE:
+    case SERVICES_PAGE:
       return _getPageRoute(ServicesCategories(), settings);
-    case SECOND_PAGE:
+    case GUIDANCE_PAGE:
       return _getPageRoute(Guidance(), settings);
-    case THIRD_PAGE:
+    case BILLING_PAGE:
       return _getPageRoute(BillingPage(), settings);
 
     default:
