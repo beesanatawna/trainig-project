@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/homepage.dart';
 import 'package:myapp/pages/main.dart';
+import 'package:myapp/pages/services.dart';
 
 import 'data.dart';
 
@@ -18,7 +19,6 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
   void initState() {
     super.initState();
     servicesMenu = mainServices;
-    print(servicesMenu);
   }
 
   @override
