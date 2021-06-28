@@ -1,13 +1,12 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/services.dart';
 import 'package:myapp/pages/servicescategories.dart';
 import 'package:http/http.dart' as http;
 import 'billingpage.dart';
 import 'data.dart';
 import 'guidance.dart';
-import 'main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,30 +15,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Services> services = [];
   void fetchServices() async {
-    try {
-      print("try");
-      final http.Response response = await http
-          .get(Uri.parse('http://portal.hepco.ps:7654/api/dalel-services'));
-      if (response.statusCode == 200) {
-        print("responce");
-        List<Services> services = parSer(response.body);
-        mainServices = services;
-        print("servises");
-        print(services);
-      } else {
-        print("mememe");
-        throw Exception('Failed to load');
-      }
-    } catch (e) {
-      print("mememe2");
-      throw Exception(e.toString());
+    http.Response response = await http
+        .get(Uri.parse('http://portal.hepco.ps:7654/api/dalel-services'));
+    if (response.statusCode == 200) {
+      var jsonArray = jsonDecode(response.body) as List;
+      services = jsonArray.map((e) => Services.fromJson(e)).toList();
+      mainServices = services;
     }
-  }
-
-  static List<Services> parSer(String responseBody) {
-    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parsed.map<Services>((json) => Services.fromJson(json)).toList();
   }
 
   @override
